@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Kesehatan Mental Anak: CKG Temukan Ratusan Ribu Anak Bergejala Cemas dan Depresi</title>
+    <style>
+        /* Reset dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header p {
+            font-size: 0.95em;
+            color: #bdc3c7;
+            margin-top: 10px;
+        }
+
+        /* NAVIGASI */
+        nav {
+            background-color: #34495e;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 60;
+        }
+
+        nav .menu-item {
+            position: relative;
+        }
+
+        nav .menu-item > a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            transition: background 0.3s;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        nav .menu-item > a:hover {
+            background-color: #1abc9c;
+        }
+
+        /* ===== DROPDOWN KATEGORI ===== */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 560px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            padding: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            z-index: 70;
+            animation: dropMuncul 0.25s ease;
+        }
+
+        .dropdown.tampil {
+            display: grid;
+        }
+
+        @keyframes dropMuncul {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-kolom h4 {
+            color: #2c3e50;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #1abc9c;
+        }
+
+        .dropdown-kolom ul {
+            list-style: none;
+        }
+
+        .dropdown-kolom ul li {
+            margin-bottom: 6px;
+        }
+
+        .dropdown-kolom ul li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.92em;
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+
+        .dropdown-kolom ul li a:hover {
+            background: #eafaf1;
+            transform: translateX(4px);
+        }
+
+        .dropdown-kolom ul li a .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #1abc9c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            flex-shrink: 0;
+        }
+
+        .dropdown-kolom ul li a .info {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .dropdown-kolom ul li a .info .judul {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .dropdown-kolom ul li a .info .sub {
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+
+        /* ===== LAYOUT UTAMA ===== */
+        .container {
+            display: flex;
+            max-width: 1100px;
+            margin: 30px auto;
+            gap: 20px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ARTIKEL UTAMA */
+        article {
+            flex: 3;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-width: 300px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        article:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        article h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            line-height: 1.3;
+        }
+
+        article .meta {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        article .meta span {
+            margin-right: 15px;
+        }
+
+        article .artikel-gambar {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 15px 0;
+            background-color: #ecf0f1;
+            display: block;
+        }
+
+        article p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .baca-selengkapnya {
+            display: inline-block;
+            margin-top: 10px;
+            color: #1abc9c;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        /* SIDEBAR */
+        aside {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-width: 250px;
+            height: fit-content;
+        }
+
+        aside h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 8px;
+            font-size: 1.3em;
+        }
+
+        /* KOTAK FAKTA / FUN FACT */
+        .kotak-fakta {
+            background: #fffbea;
+            border-left: 4px solid #f39c12;
+            padding: 15px 18px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .kotak-fakta:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            border-left-color: #e67e22;
+        }
+
+        .kotak-fakta .label-funfact {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            font-size: 0.7em;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .kotak-fakta h4 {
+            font-size: 1.05em;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+
+        .kotak-fakta p {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .kotak-fakta .lihat-detail {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #d68910;
+            font-weight: bold;
+        }
+
+        /* Kotak Favorit */
+        #daftarFavorit {
+            list-style: none;
+            font-size: 0.9em;
+        }
+
+        #daftarFavorit li {
+            padding: 8px 10px;
+            background: #f9f9f9;
+            border-left: 4px solid #f39c12;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+        }
+
+        #daftarFavorit li span {
+            flex: 1;
+        }
+
+        #daftarFavorit li button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 3px 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+
+        #daftarFavorit li button:hover {
+            background: #c0392b;
+        }
+
+        .kosong {
+            font-size: 0.9em;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px 25px;
+            margin-top: 40px;
+            scroll-margin-top: 70px;
+        }
+
+        footer h3 {
+            color: #1abc9c;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        footer .kontak-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        footer .kontak-info div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        footer hr {
+            border: none;
+            border-top: 1px solid #3d566e;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        footer a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .modal-overlay.aktif {
+            display: flex;
+        }
+
+        .modal-konten {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 35px;
+            position: relative;
+            animation: muncul 0.3s ease;
+        }
+
+        @keyframes muncul {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-konten h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.7em;
+            padding-right: 40px;
+            line-height: 1.3;
+        }
+
+        .modal-konten .meta {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .modal-konten .meta span {
+            margin-right: 15px;
+        }
+
+        .modal-konten img.artikel-gambar {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .modal-konten p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .tombol-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .tombol-close:hover {
+            background: #c0392b;
+        }
+
+        .aksi {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .aksi button {
+            background: #ecf0f1;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+        }
+
+        .aksi button:hover {
+            background: #dfe6e9;
+        }
+
+        .aksi button.aktif-like {
+            background: #ffe6e6;
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .aksi button.aktif-favorit {
+            background: #fff7e0;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        /* ===== MODAL FUN FACT (tanpa gambar, tampilan menarik) ===== */
+        .modal-funfact {
+            max-width: 620px;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 14px;
+        }
+
+        .modal-funfact .funfact-header {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            padding: 30px 30px 25px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-funfact .funfact-header .emoji-besar {
+            font-size: 3.5em;
+            display: block;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .modal-funfact .funfact-header h3 {
+            font-size: 1.6em;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .modal-funfact .funfact-header .subtitle {
+            font-size: 0.9em;
+            opacity: 0.95;
+        }
+
+        .modal-funfact .funfact-isi {
+            padding: 28px 32px 32px;
+            background: #fffbea;
+        }
+
+        .modal-funfact .funfact-isi p {
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .modal-funfact .funfact-isi .fakta-tag {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+
+        .modal-funfact .tombol-close {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+
+        .modal-funfact .tombol-close:hover {
+            background: white;
+            color: #e74c3c;
+        }
+
+        /* ===== TOMBOL BACK TO TOP ===== */
+        #tombolKeAtas {
+            display: none;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #1abc9c;
+            color: white;
+            border: none;
+            font-size: 1.3em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 90;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        #tombolKeAtas:hover {
+            background: #16a085;
+            transform: translateY(-3px);
+        }
+
+        #tombolKeAtas.tampil {
+            display: block;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            header h1 {
+                font-size: 1.3em;
+            }
+
+            nav .menu-item > a {
+                padding: 12px 14px;
+                font-size: 0.9em;
+            }
+
+            .dropdown {
+                min-width: 90vw;
+                left: -20px;
+                grid-template-columns: 1fr;
+            }
+
+            .modal-konten {
+                padding: 25px 20px;
+            }
+
+            .modal-konten h2 {
+                font-size: 1.3em;
+            }
+
+            .modal-funfact .funfact-header {
+                padding: 25px 20px 20px;
+            }
+
+            .modal-funfact .funfact-isi {
+                padding: 22px 22px 26px;
+            }
+
+            .modal-funfact .funfact-header h3 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body id="atas">
+
+    <!-- HEADER -->
+    <header>
+        <h1>Alarm Kesehatan Mental Anak: CKG Temukan Ratusan Ribu Anak Bergejala Cemas dan Depresi</h1>
+        <p>Portal Berita Kesehatan & Edukasi</p>
+    </header>
+
+    <!-- NAVIGASI -->
+    <nav>
+        <div class="menu-item">
+            <a href="#atas" onclick="kembaliKeAtas(event)">🏠 Home</a>
+        </div>
+
+        <div class="menu-item">
+            <a href="#" onclick="toggleDropdown(event)">📂 Kategori ▾</a>
+
+            <div class="dropdown" id="dropdownKategori">
+                <div class="dropdown-kolom">
+                    <h4>📰 Artikel Utama</h4>
+                    <ul>
+                        <li>
+                            <a onclick="bukaArtikelDariMenu()">
+                                <span class="icon">📖</span>
+                                <span class="info">
+                                    <span class="judul">Alarm Kesehatan Mental Anak</span>
+                                    <span class="sub">CKG temukan ratusan ribu anak bergejala cemas & depresi</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="dropdown-kolom">
+                    <h4>✨ Fakta Menarik</h4>
+                    <ul>
+                        <li>
+                            <a onclick="bukaFaktaDariMenu()">
+                                <span class="icon" style="background:#f39c12;">💡</span>
+                                <span class="info">
+                                    <span class="judul">Tahukah kamu?</span>
+                                    <span class="sub">Fun fact kesehatan mental anak</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item"><a href="#">Tentang</a></div>
+
+        <div class="menu-item">
+            <a href="#footer" onclick="keFooter(event)">📞 Kontak</a>
+        </div>
+    </nav>
+
+    <!-- KONTEN UTAMA -->
+    <div class="container">
+
+        <!-- ARTIKEL UTAMA -->
+        <article id="artikelUtama" onclick="bukaModal()">
+            <h2>Alarm Kesehatan Mental Anak: CKG Temukan Ratusan Ribu Anak Bergejala Cemas dan Depresi</h2>
+
+            <div class="meta">
+                <span>✍️ Oleh: <strong>Biro Komunikasi dan Pelayanan Publik Kemenkes RI</strong></span>
+                <span>📅 9 Maret 2026</span>
+            </div>
+
+            <!-- Gambar yang ditambahkan ke dalam inti artikel -->
+            <img src="WhatsApp Image 2026-10-12 at 7.52.35 AM.jpeg" 
+                 alt="Ilustrasi Kecemasan pada Anak" 
+                 class="artikel-gambar">
+
+            <p>
+                <strong>Jakarta, 9 Maret 2026</strong> — Program Cek Kesehatan Gratis (CKG) 
+                periode 2025–2026 menemukan indikasi masalah kesehatan jiwa pada hampir 
+                10 persen anak di Indonesia. Dari sekitar 7 juta anak yang telah menjalani 
+                skrining, Kementerian Kesehatan (Kemenkes) mendeteksi gejala kecemasan dan 
+                depresi dalam jumlah signifikan...
+            </p>
+
+            <p>
+                Budi mengungkapkan, sebanyak 4,4 persen atau sekitar 338 ribu anak menunjukkan 
+                gejala cemas (anxiety disorder). Sementara itu, 4,8 persen atau sekitar 363 
+                ribu anak menunjukkan gejala depresi (depression disorder).
+            </p>
+
+            <span class="baca-selengkapnya">🔍 Klik artikel untuk membaca selengkapnya</span>
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside>
+            <h3>Fakta & Foto</h3>
+
+            <!-- FUN FACT (satu-satunya) -->
+            <div class="kotak-fakta" onclick="bukaModalFakta()">
+                <span class="label-funfact">💡 Fun Fact</span>
+                <h4>Tahukah kamu?</h4>
+                <p>Kesehatan mental sama pentingnya dengan kesehatan fisik. Klik untuk baca selengkapnya.</p>
+                <span class="lihat-detail">🔍 Lihat detail →</span>
+            </div>
+
+            <h3 style="margin-top:25px;">⭐ Favorit Saya</h3>
+            <ul id="daftarFavorit">
+                <li class="kosong">Belum ada artikel favorit.</li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <h3>📞 Hubungi Kami</h3>
+
+        <div class="kontak-info">
+            <div>✉️ <a href="mailto:kontak@kemkes.go.id">kontak@kemkes.go.id</a></div>
+            <div>📱 <a href="tel:1500567">Hotline 1500-567</a></div>
+            <div>📍 Jakarta, Indonesia</div>
+        </div>
+
+        <hr>
+
+        <p>&copy; 2026 Portal Berita Kesehatan. Semua Hak Dilindungi.</p>
+        <p>Dibuat dengan ❤️ | <a href="#">Kebijakan Privasi</a> | <a href="#">Syarat & Ketentuan</a></p>
+    </footer>
+
+    <button id="tombolKeAtas" onclick="kembaliKeAtas()" title="Kembali ke atas">↑</button>
+
+    <!-- ===== MODAL ARTIKEL ===== -->
+    <div class="modal-overlay" id="modalArtikel" onclick="tutupModalJikaLuar(event)">
+        <div class="modal-konten">
+            <button class="tombol-close" onclick="tutupModal()">✕</button>
+
+            <h2>Alarm Kesehatan Mental Anak: CKG Temukan Ratusan Ribu Anak Bergejala Cemas dan Depresi</h2>
+
+            <div class="meta">
+                <span>✍️ Oleh: <strong>Biro Komunikasi dan Pelayanan Publik Kemenkes RI</strong></span>
+                <span>📅 9 Maret 2026</span>
+            </div>
+
+            <!-- Gambar yang sama di dalam modal artikel -->
+            <img src="WhatsApp Image 2026-10-12 at 7.52.35 AM.jpeg" 
+                 alt="Ilustrasi Kecemasan pada Anak" 
+                 class="artikel-gambar">
+
+            <p><strong>Jakarta, 9 Maret 2026</strong> — Program Cek Kesehatan Gratis (CKG) periode 2025–2026 menemukan indikasi masalah kesehatan jiwa pada hampir 10 persen anak di Indonesia. Dari sekitar 7 juta anak yang telah menjalani skrining, Kementerian Kesehatan (Kemenkes) mendeteksi gejala kecemasan dan depresi dalam jumlah signifikan. Hal ini disampaikan oleh Menteri Kesehatan RI, Budi Gunadi Sadikin dalam konferensi pers yang diselenggarakan di Kantor Kemenkes, Jakarta, Senin (9/3).</p>
+
+            <p>Budi mengungkapkan, sebanyak 4,4 persen atau sekitar 338 ribu anak menunjukkan gejala cemas (anxiety disorder). Sementara itu, 4,8 persen atau sekitar 363 ribu anak menunjukkan gejala depresi (depression disorder).</p>
+
+            <p>"Ini menunjukkan masalah kesehatan jiwa itu besar sekali," ujar Budi.</p>
+
+            <p>Menurutnya, persoalan kesehatan mental pada anak perlu mendapat perhatian serius karena dapat berujung pada kematian akibat bunuh diri. Data Global School-Based Student Health Survey menunjukkan tren peningkatan anak yang mencoba bunuh diri, dari 3,9 persen pada 2015 menjadi 10,7 persen pada 2023.</p>
+
+            <p>Menkes menjelaskan, masalah kesehatan jiwa pada anak tidak hanya dipengaruhi faktor individu, tetapi juga lingkungan keluarga, pertemanan, serta pendidikan.</p>
+
+            <p>"Yang perlu diperbaiki bukan hanya anaknya, tetapi juga pola asuh keluarga serta lingkungan belajar. Kita perlu menyosialisasikan life skill dan Pertolongan Pertama pada Luka Psikologis (P3LP). Semua orang pasti menghadapi tekanan, namun yang terpenting adalah bagaimana meresponsnya dengan baik," katanya.</p>
+
+            <p>Menindaklanjuti temuan tersebut, Kemenkes menargetkan perluasan skrining CKG hingga menjangkau 25 juta anak. Direktur Jenderal Kesehatan Primer dan Komunitas, Maria Endang Sumiwi, mengatakan hasil skrining akan ditindaklanjuti oleh Puskesmas.</p>
+
+            <p>Saat ini pemerintah juga mempercepat pemenuhan tenaga psikolog klinis di Puskesmas yang jumlahnya masih terbatas, yakni sekitar 203 orang. Selain itu, pemerintah menyiagakan layanan krisis kesehatan jiwa melalui Healing119.id guna mendukung intervensi cepat.</p>
+
+            <p>Di sektor pendidikan, Kemenkes mendorong peran guru Bimbingan Konseling (BK) dan guru kelas untuk mendampingi siswa yang terdeteksi memiliki gejala.</p>
+
+            <p>Upaya deteksi dini ini juga diperkuat melalui penandatanganan Surat Keputusan Bersama (SKB) tentang Kesehatan Jiwa Anak oleh sembilan kementerian dan lembaga pada Kamis (5/3). Kolaborasi tersebut bertujuan membangun sistem penanganan kesehatan jiwa anak yang terintegrasi, mulai dari pencegahan (promotif-preventif) hingga pengobatan (kuratif-rehabilitatif).</p>
+
+            <p>Sembilan instansi yang terlibat meliputi Kemenkes, KemenPPPA, Komdigi, Kemendikdasmen, Kemendukbangga/BKKBN, Kemenag, Kemendagri, Kemensos, dan Polri.</p>
+
+            <p>Melalui SKB tersebut, pemerintah juga menjamin kerahasiaan data pribadi anak guna mencegah stigma serta memastikan setiap anak mendapatkan perlindungan kesehatan mental secara komprehensif, baik di lingkungan sekolah maupun keluarga.</p>
+
+            <p><em>Berita ini disiarkan oleh Biro Komunikasi dan Pelayanan Publik Kementerian Kesehatan RI. Untuk informasi lebih lanjut, masyarakat dapat menghubungi Halo Kemenkes melalui hotline 1500-567 atau email kontak@kemkes.go.id. (UW/HY)</em></p>
+
+            <p style="margin-top:25px;"><strong>Kepala Biro Komunikasi dan Informasi Publik</strong><br>
+            Aji Muhawarman, ST, MKM</p>
+
+            <div class="aksi">
+                <button id="tombolLike" onclick="toggleLike(event)">
+                    ❤️ <span>Suka</span> (<span id="jumlahLike">0</span>)
+                </button>
+
+                <button id="tombolFavorit" onclick="toggleFavorit(event)">
+                    ⭐ <span>Tambah ke Favorit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL FUN FACT (tanpa gambar) ===== -->
+    <div class="modal-overlay" id="modalFakta" onclick="tutupModalFaktaJikaLuar(event)">
+        <div class="modal-konten modal-funfact">
+            <div class="funfact-header">
+                <button class="tombol-close" onclick="tutupModalFakta()">✕</button>
+                <span class="emoji-besar">💡</span>
+                <h3>Tahukah kamu?</h3>
+                <p class="subtitle">Fun Fact Kesehatan Mental Anak</p>
+            </div>
+
+            <div class="funfact-isi">
+                <p id="faktaPenjelasan"></p>
+                <div id="faktaTag"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== DATA FUN FACT (satu-satunya) =====
+        const funFact = {
+            judul: 'Tahukah kamu?',
+            penjelasan: 'Berdasarkan artikel Kemenkes, dari sekitar 7 juta anak yang menjalani skrining kesehatan gratis pada periode 2025–2026, sekitar 338 ribu anak menunjukkan gejala kecemasan dan 363 ribu anak menunjukkan gejala depresi. Karena itu, kesehatan mental sama pentingnya dengan kesehatan fisik dan perlu mendapat perhatian dari keluarga maupun sekolah.',
+            tags: ['Fun Fact', 'Kesehatan Mental', 'Anak']
+        };
+
+        // ===== KEMBALI KE ATAS =====
+        function kembaliKeAtas(e) {
+            if (e) e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== KE FOOTER =====
+        function keFooter(e) {
+            if (e) e.preventDefault();
+            const footer = document.getElementById('footer');
+            footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        window.addEventListener('scroll', function() {
+            const tombol = document.getElementById('tombolKeAtas');
+            if (window.scrollY > 300) {
+                tombol.classList.add('tampil');
+            } else {
+                tombol.classList.remove('tampil');
+            }
+        });
+
+        // ===== DROPDOWN =====
+        function toggleDropdown(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            document.getElementById('dropdownKategori').classList.toggle('tampil');
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.menu-item')) {
+                document.getElementById('dropdownKategori').classList.remove('tampil');
+            }
+        });
+
+        function bukaArtikelDariMenu() {
+            document.getElementById('dropdownKategori').classList.remove('tampil');
+            bukaModal();
+        }
+
+        function bukaFaktaDariMenu() {
+            document.getElementById('dropdownKategori').classList.remove('tampil');
+            bukaModalFakta();
+        }
+
+        // ===== MODAL ARTIKEL =====
+        function bukaModal() {
+            document.getElementById('modalArtikel').classList.add('aktif');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function tutupModal() {
+            document.getElementById('modalArtikel').classList.remove('aktif');
+            document.body.style.overflow = '';
+        }
+
+        function tutupModalJikaLuar(e) {
+            if (e.target.id === 'modalArtikel') tutupModal();
+        }
+
+        // ===== MODAL FUN FACT =====
+        function bukaModalFakta() {
+            document.getElementById('faktaPenjelasan').textContent = funFact.penjelasan;
+
+            const tagContainer = document.getElementById('faktaTag');
+            tagContainer.innerHTML = '';
+            funFact.tags.forEach(t => {
+                const span = document.createElement('span');
+                span.className = 'fakta-tag';
+                span.textContent = '#' + t;
+                tagContainer.appendChild(span);
+            });
+
+            document.getElementById('modalFakta').classList.add('aktif');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function tutupModalFakta() {
+            document.getElementById('modalFakta').classList.remove('aktif');
+            document.body.style.overflow = '';
+        }
+
+        function tutupModalFaktaJikaLuar(e) {
+            if (e.target.id === 'modalFakta') tutupModalFakta();
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                tutupModal();
+                tutupModalFakta();
+                document.getElementById('dropdownKategori').classList.remove('tampil');
+            }
+        });
+
+        // ===== LIKE =====
+        let jumlahLike = parseInt(localStorage.getItem('jumlahLike') || '0');
+        let sudahLike = localStorage.getItem('sudahLike') === 'true';
+
+        function perbaruiTampilanLike() {
+            document.getElementById('jumlahLike').textContent = jumlahLike;
+            const tombol = document.getElementById('tombolLike');
+            if (sudahLike) {
+                tombol.classList.add('aktif-like');
+                tombol.querySelector('span').textContent = 'Disukai';
+            } else {
+                tombol.classList.remove('aktif-like');
+                tombol.querySelector('span').textContent = 'Suka';
+            }
+        }
+
+        function toggleLike(e) {
+            e.stopPropagation();
+            if (sudahLike) { jumlahLike--; sudahLike = false; }
+            else { jumlahLike++; sudahLike = true; }
+            localStorage.setItem('jumlahLike', jumlahLike);
+            localStorage.setItem('sudahLike', sudahLike);
+            perbaruiTampilanLike();
+        }
+
+        perbaruiTampilanLike();
+
+        // ===== FAVORIT =====
+        let daftarFavorit = JSON.parse(localStorage.getItem('daftarFavorit') || '[]');
+        const judulArtikel = "Alarm Kesehatan Mental Anak: CKG Temukan Ratusan Ribu Anak Bergejala Cemas dan Depresi";
+
+        function apakahFavorit() {
+            return daftarFavorit.some(item => item.judul === judulArtikel);
+        }
+
+        function perbaruiTampilanFavorit() {
+            const tombol = document.getElementById('tombolFavorit');
+            if (apakahFavorit()) {
+                tombol.classList.add('aktif-favorit');
+                tombol.querySelector('span').textContent = 'Hapus dari Favorit';
+            } else {
+                tombol.classList.remove('aktif-favorit');
+                tombol.querySelector('span').textContent = 'Tambah ke Favorit';
+            }
+            renderDaftarFavorit();
+        }
+
+        function toggleFavorit(e) {
+            e.stopPropagation();
+            if (apakahFavorit()) {
+                daftarFavorit = daftarFavorit.filter(item => item.judul !== judulArtikel);
+            } else {
+                daftarFavorit.push({ judul: judulArtikel });
+            }
+            localStorage.setItem('daftarFavorit', JSON.stringify(daftarFavorit));
+            perbaruiTampilanFavorit();
+        }
+
+        function renderDaftarFavorit() {
+            const ul = document.getElementById('daftarFavorit');
+            ul.innerHTML = '';
+            if (daftarFavorit.length === 0) {
+                ul.innerHTML = '<li class="kosong">Belum ada artikel favorit.</li>';
+                return;
+            }
+            daftarFavorit.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>📄 ${item.judul}</span>
+                    <button title="Hapus" onclick="hapusFavorit(${index})">✕</button>
+                `;
+                ul.appendChild(li);
+            });
+        }
+
+        function hapusFavorit(index) {
+            daftarFavorit.splice(index, 1);
+            localStorage.setItem('daftarFavorit', JSON.stringify(daftarFavorit));
+            perbaruiTampilanFavorit();
+        }
+
+        perbaruiTampilanFavorit();
+    </script>
+
+</body>
+</html>
